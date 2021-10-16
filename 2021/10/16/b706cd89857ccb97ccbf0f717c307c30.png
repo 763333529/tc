@@ -1,0 +1,109 @@
+function Main0()
+SN = gg.choice({
+	 "启动安卓正常版本",
+	 "启动安卓十一版本",
+}, nil, "正常版本可以使用的话就不需要启动安卓11版本")
+if SN==1 then
+	 Main2()
+end
+if SN==2 then
+	 Main1()
+end
+FX=0
+end
+
+--lua养老群:883247075
+
+
+
+--[[
+【脚本链接】空【脚本链接】
+
+【脚本名称】测试【脚本名称】
+
+【开】开【关】
+
+【开群】开群【关群】
+
+【群号】空【群号】
+
+【开公告】关公告【关公告】
+
+【公告内容】空【公告内容】
+
+【最新版本】1.0【最新版本】
+]]
+
+--必须使用老版本讯飞不然没有用！！！！
+--我这里已经提供了
+
+local Cloud = "http://www.iyuji.cn/iyuji/s/YkJacjhBL0R3UWhVaVhWTFM3ZDRMZz09/1633715220045211"--这里替换你的讯飞链接
+local Post = gg.makeRequest(Cloud).content
+if not Post then
+  return print("网络连接失败")
+end
+local choice1 = Post:match("阅读&nbsp; (.-)</div>")
+local Script = Post:match('【脚本链接】(.-)【脚本链接】')
+local choice2 = Post:match('【开】(.-)【关】')
+local choice3 = Post:match('【开群】(.-)【关群】')
+local choice4 = Post:match('【群号】(.-)【群号】')
+local choice5 = Post:match('【开公告】(.-)【关公告】')
+local choice6 = Post:match('【公告内容】(.-)【公告内容】')
+local choice7 = Post:match('【最新版本】(.-)【最新版本】')
+
+if not Cloud or not Post then
+  while true do
+    os.exit()
+  end
+end
+if (choice2 ~= "开") then
+  while true do
+    os.exit()
+  end
+end
+if (choice3 == "开群") then
+  print("交流群:"..choice4)
+end
+
+if (choice5 == "开公告") then
+  gg.alert(choice6)
+end
+
+
+
+Version = "2.1"--更新的时候记得更新版本号
+
+if (choice7 > Version) then
+  gg.copyText(Script)
+  gg.alert("已帮你复制下载链接\n当前版本为:"..Version.."\n已有最新版本:"..choice7)
+  return os.exit()
+  elseif (choice7 < Version) then 
+  return os.exit()
+end
+
+function ygg()
+gg.alert(choice6)
+end
+
+
+local Cloud = "http://www.iyuji.cn/iyuji/s/YkJacjhBL0R3UWhVaVhWTFM3ZDRMZz09/1633715220045211"--这里替换你的讯飞链接
+local Post = gg.makeRequest(Cloud).content
+local AZ11 = Post:match("【安卓正常版本】(.-)【安卓正常版本】")
+function Main2()
+SN = (AZ11)
+pcall(load(gg.makeRequest(SN).content))
+os.exit()
+end
+
+
+local Cloud1 = "http://www.iyuji.cn/iyuji/s/YkJacjhBL0R3UWhVaVhWTFM3ZDRMZz09/1633715220045211"--这里替换你的讯飞链接
+local Post1 = gg.makeRequest(Cloud1).content
+local AZZC = Post:match("【安卓十一版本】(.-)【安卓十一版本】")
+function Main1()
+SN1 = (AZZC)
+pcall(load(gg.makeRequest(SN1).content))
+os.exit()
+end
+
+
+Main0()
